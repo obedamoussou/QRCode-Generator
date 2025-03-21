@@ -1,9 +1,11 @@
-import Url from "./components/url";
+i
 
 function App() {
 
   return (
-    <Url />
+
+    
+
   );
 
 }

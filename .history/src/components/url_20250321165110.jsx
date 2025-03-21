@@ -71,7 +71,7 @@ function Url () {
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
                     </label>
 
-                    <label htmlFor="" className="start text-lg font-medium">Image Heigth :  
+                    <label htmlFor="" className="text-lg font-medium">Image Heigth :  
                     <input type="number" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTempLogoHeight(e.target.value)} />
                     </label>
 
@@ -84,7 +84,8 @@ function Url () {
 
                 <button
                     onClick={handleClick}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                    >
                     Générer QR Code
                 </button>
             </form>

@@ -7,6 +7,7 @@ function Url () {
     const [color, setColor] = useState("#ffffff");
     const [bgColor, setBgColor] = useState("#000000");
     const [imageInt, setImageInt] = useState("");
+    const [qrValue, setQrValue] = useState("");
     const [logoHeight, setLogoHeight] = useState(35);
     const [logoWidth, setLogoWidth] = useState(35);
 
@@ -34,6 +35,7 @@ function Url () {
         setQrValue(url);
         setColor(tempColor);
         setBgColor(tempBgColor);
+        setTaille(tempTaille);
         setImageInt(tempImageInt);
         setLogoHeight(tempLogoHeight);
         setLogoWidth(tempLogoWidth);
@@ -71,21 +73,21 @@ function Url () {
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
                     </label>
 
-                    <label htmlFor="" className="start text-lg font-medium">Image Heigth :  
+                    <label htmlFor="" className="text-lg font-medium">Image Heigth :  
                     <input type="number" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTempLogoHeight(e.target.value)} />
                     </label>
 
                     <label htmlFor="" className="text-lg font-medium">Image Width :  
-                    <input type="number" id="" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTempLogoWidth(e.target.value)} />
+                    <input type="number" id="" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setLogoWidth(e.target.value)} />
                     </label>
               
                     
                 </div>
 
-                <button
-                    onClick={handleClick}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                    Générer QR Code
+                <button 
+                onClick={handleClick}
+                >
+                    Générer 
                 </button>
             </form>
 

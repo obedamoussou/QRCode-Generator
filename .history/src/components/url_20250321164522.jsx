@@ -4,15 +4,17 @@ import {QRCodeSVG} from 'qrcode.react'
 function Url () {
     
     const [qrValue, setQrValue] = useState("");
-    const [color, setColor] = useState("#ffffff");
-    const [bgColor, setBgColor] = useState("#000000");
-    const [imageInt, setImageInt] = useState("");
-    const [logoHeight, setLogoHeight] = useState(35);
-    const [logoWidth, setLogoWidth] = useState(35);
+    const [color, setColor] = useState("#ffffff")
+    const [bgColor, setBgColor] = useState("#000000")
+    const [imageInt, setImageInt] = useState("")
+    const [qrValue, setQrValue] = useState("")
+    const [logoHeight, setLogoHeight] = useState(35)
+    const [logoWidth, setLogoWidth] = useState(35)
 
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState("")
     const [tempColor, setTempColor] = useState("#ffffff");
     const [tempBgColor, setTempBgColor] = useState("#000000");
+    const [tempTaille, setTempTaille] = useState(200);
     const [tempImageInt, setTempImageInt] = useState("");
     const [tempLogoHeight, setTempLogoHeight] = useState(35);
     const [tempLogoWidth, setTempLogoWidth] = useState(35);
@@ -23,7 +25,7 @@ function Url () {
     
         const reader = new FileReader();
         reader.onloadend = () => {
-            setTempImageInt(reader.result);
+          setImageInt(reader.result);
         };
         reader.readAsDataURL(file);
       };
@@ -34,6 +36,7 @@ function Url () {
         setQrValue(url);
         setColor(tempColor);
         setBgColor(tempBgColor);
+        setTaille(tempTaille);
         setImageInt(tempImageInt);
         setLogoHeight(tempLogoHeight);
         setLogoWidth(tempLogoWidth);
@@ -53,14 +56,14 @@ function Url () {
                     <input
                     type="color"
                     value={color}
-                    onChange={(e) => setTempColor(e.target.value)}
+                    onChange={(e) => tempColor(e.target.value)}
                     className="w-10 h-10 p-1 border rounded-md"
                     />
                     <label htmlFor="" className="text-lg font-medium">Background Color</label>
                     <input
                     type="color"
                     value={bgColor}
-                    onChange={(e) => setTempBgColor(e.target.value)}
+                    onChange={(e) => setBgColor(e.target.value)}
                     className="w-10 h-10 p-1 border rounded-md"
                     />
                 </div>
@@ -71,21 +74,21 @@ function Url () {
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
                     </label>
 
-                    <label htmlFor="" className="start text-lg font-medium">Image Heigth :  
-                    <input type="number" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTempLogoHeight(e.target.value)} />
+                    <label htmlFor="" className="text-lg font-medium">Image Heigth :  
+                    <input type="number" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setLogoHeight(e.target.value)} />
                     </label>
 
                     <label htmlFor="" className="text-lg font-medium">Image Width :  
-                    <input type="number" id="" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTempLogoWidth(e.target.value)} />
+                    <input type="number" id="" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setLogoWidth(e.target.value)} />
                     </label>
               
                     
                 </div>
 
-                <button
-                    onClick={handleClick}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                    Générer QR Code
+                <button 
+                onClick={handleClick}
+                >
+                    Générer 
                 </button>
             </form>
 
