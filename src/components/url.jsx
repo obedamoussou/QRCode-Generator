@@ -2,7 +2,6 @@ import { useState } from "react"
 import {QRCodeSVG} from 'qrcode.react'
 
 function Url () {
-
     const [url, setUrl] = useState("")
     const [color, setColor] = useState("#ffffff")
     const [bgColor, setBgColor] = useState("#000000")
