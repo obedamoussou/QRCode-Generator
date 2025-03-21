@@ -50,6 +50,8 @@ function Url () {
                     className="border p-2 rounded-md w-80 mb-4"
                     onChange={(e) => setUrl(e.target.value)}
                 />
+
+                <div className="bg-blue-50 rounded-xl p-8 items-center ">
                     
 
                 <div className="flex items-center gap-4 mb-4">

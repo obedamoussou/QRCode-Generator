@@ -40,17 +40,29 @@ function Url () {
       };
       
     return(
-        
         <div className="flex flex-wrap gap-y-5 gap-x-10">
-
-            <form action="">
+            <form  action="">
                 <input 
                     type="url"
                     value={ url}
                     className="border p-2 rounded-md w-80 mb-4"
                     onChange={(e) => setUrl(e.target.value)}
                 />
+
+                <div className="bg-blue-50 rounded-xl p-8 items-center ">
                     
+                {qrValue && <QRCodeSVG value={url} fgColor={color} bgColor={bgColor} size={170} imageSettings={
+                    imageInt
+                    ? {
+                        src: imageInt, // Image intégrée en base64
+                        height: logoHeight, // Taille de l’image dans le QR Code
+                        width: logoWidth,
+                        opacity: imgOpacity,
+                        excavate: true, // Garde un espace clair derrière l'image
+                      }
+                    : undefined
+                     } />
+                }
 
                 <div className="flex items-center gap-4 mb-4">
                     <label className="text-lg font-medium">Couleur :</label>
@@ -92,7 +104,7 @@ function Url () {
                     className="bg-blue-500 text-white px-4 py-2 rounded-md">
                     Générer QR Code
                 </button>
-            </form>
+        </form>
 
             <div className="bg-blue-50 rounded-xl p-8">
                     

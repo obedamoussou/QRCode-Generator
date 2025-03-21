@@ -40,9 +40,7 @@ function Url () {
       };
       
     return(
-        
         <div className="flex flex-wrap gap-y-5 gap-x-10">
-
             <form action="">
                 <input 
                     type="url"
@@ -50,8 +48,6 @@ function Url () {
                     className="border p-2 rounded-md w-80 mb-4"
                     onChange={(e) => setUrl(e.target.value)}
                 />
-                    
-
                 <div className="flex items-center gap-4 mb-4">
                     <label className="text-lg font-medium">Couleur :</label>
                     <input
@@ -85,7 +81,6 @@ function Url () {
               
                     
                 </div>
-
 
                 <button
                     onClick={handleClick}
