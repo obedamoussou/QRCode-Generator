@@ -4,7 +4,7 @@ const Inscription = () => {
   return (
     
     <section className='items-center pt-10'>
-       <h1 className=' text-[#0000FF] text-xl font-bold pb-4'>Inscription</h1>
+       <h1 className=' text-[#0000FF] text-xl font-bold pb-4 '>Inscription</h1>
        <form className='rounded border-2 p-4 bg-blue-50 gap-y-2' action="">
             <input type="text" name='nom' placeholder='Nom' />
             <input type="text" name='prenoms' placeholder='Prénoms'/>
