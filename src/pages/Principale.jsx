@@ -6,7 +6,7 @@ const Principale = () => {
     
     <section >
        
-        <div className='justify-center flex gap-x-10 pt-14'>
+        <div className='justify-center flex flex-wrap gap-x-10 pt-10 md:pt-14'>
             <SideBar/>
             
 
