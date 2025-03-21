@@ -6,7 +6,6 @@ function Url () {
     const [url, setUrl] = useState("")
     const [color, setColor] = useState("#ffffff")
     const [bgColor, setBgColor] = useState("#000000")
-    const [taille, setTaille] = useState(200)
     const [imageInt, setImageInt] = useState("")
     const [qrValue, setQrValue] = useState("")
     const [logoHeight, setLogoHeight] = useState(35)
@@ -56,9 +55,7 @@ function Url () {
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="" className="text-lg font-medium">QR Taille : 
-                    <input type="number" className="border p-2 rounded-md w-80 mb-4" onChange={(e) => setTaille(e.target.value)} />
-                    </label>
+                    
 
                     <label htmlFor="" className="text-lg font-medium">Image Width :  
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
@@ -85,7 +82,7 @@ function Url () {
                 </button>
             </form>
                     
-                {qrValue && <QRCodeSVG value={url} fgColor={color} bgColor={bgColor} size={taille} imageSettings={
+                {qrValue && <QRCodeSVG value={url} fgColor={color} bgColor={bgColor} size={170} imageSettings={
                     imageInt
                     ? {
                         src: imageInt, // Image intégrée en base64
