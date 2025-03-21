@@ -29,7 +29,7 @@ function Url () {
       };
       
     return(
-        <div>
+        <div className="flex flex-wrap gap-y-5 gap-x-10">
             <form action="">
                 <input 
                     type="url"
@@ -77,9 +77,11 @@ function Url () {
                 <button 
                 onClick={handleClick}
                 >
-                    clique moi 
+                    Générer 
                 </button>
             </form>
+
+            <div className="bg-blue-50 rounded-xl p-8">
                     
                 {qrValue && <QRCodeSVG value={url} fgColor={color} bgColor={bgColor} size={170} imageSettings={
                     imageInt
@@ -92,6 +94,7 @@ function Url () {
                       }
                     : undefined
                      } />}
+            </div>
         </div>
     )
 }
