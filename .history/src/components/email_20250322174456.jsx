@@ -6,8 +6,6 @@ const Email = () => {
   
 
   const [email, setEmail] = useState("");
-  const [tempSubject, setTempSubject] = useState("")
-  const [tempBody, setTempBody] = useState("")
   const [tempColor, setTempColor] = useState("#ffffff");
   const [tempBgColor, setTempBgColor] = useState("#000000");
   const [tempImageInt, setTempImageInt] = useState("");
@@ -19,9 +17,11 @@ const Email = () => {
   const [body, setBody] = useState("");
   const [color, setColor] = useState("#ffffff");
   const [bgColor, setBgColor] = useState("#000000");
+  const [taille, setTaille] = useState(200);
   const [imageInt, setImageInt] = useState("");
   const [logoHeight, setLogoHeight] = useState(35);
   const [logoWidth, setLogoWidth] = useState(35);
+  const [imgOpacity, setImgOpacity] = useState(1);
   const [error, setError] = useState("");
 
   const handleImageUpload = (event) => {
@@ -42,7 +42,7 @@ const Email = () => {
 
     const generateMailtoLink = () => {
         if (!email) return "";
-        return `mailto:${qrValue}?subject=${encodeURIComponent(tempSubject)}&body=${encodeURIComponent(tempBody)}`;
+        return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     const handleClick = (e) => {
@@ -57,13 +57,13 @@ const Email = () => {
 
         setError("");
         setQrValue(email); // Met à jour la valeur du QR Code
-        setTempSubject(subject)
-        setTempBody(body)
         setColor(tempColor);
         setBgColor(tempBgColor);
+        setTaille(tempTaille);
         setImageInt(tempImageInt);
         setLogoHeight(tempLogoHeight);
         setLogoWidth(tempLogoWidth);
+        setImgOpacity(tempImgOpacity);
         
       };
 
@@ -115,6 +115,15 @@ const Email = () => {
           </label>
 
         <div className="flex flex-col">
+          <label className="text-lg font-medium">
+            QR Taille :
+            <input
+              type="number"
+              className="border p-2 rounded-md w-80 mb-4"
+              value={tempTaille}
+              onChange={(e) => setTempTaille(Number(e.target.value))}
+            />
+          </label>
 
           <label className="text-lg font-medium">
             Image Upload :
@@ -146,6 +155,16 @@ const Email = () => {
             />
           </label>
 
+          <label className="text-lg font-medium">
+            Image Opacity :
+            <input
+              type="number"
+              step="0.1"
+              className="border p-2 rounded-md w-80 mb-4"
+              value={tempImgOpacity}
+              onChange={(e) => setTempImgOpacity(Number(e.target.value))}
+            />
+          </label>
         </div>
 
         <button
@@ -160,7 +179,7 @@ const Email = () => {
 
       { qrValue && <QRCodeCanvas 
         value={generateMailtoLink()} 
-        size={170} 
+        size={taille} 
         fgColor={color} 
         bgColor={bgColor}
           imageSettings={
@@ -169,6 +188,7 @@ const Email = () => {
                   src: imageInt,
                   height: logoHeight,
                   width: logoWidth,
+                  opacity: imgOpacity,
                   excavate: true,
                 }
               : undefined

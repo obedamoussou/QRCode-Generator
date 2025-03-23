@@ -46,9 +46,11 @@ function Tel() {
     setQrValue(tel);
     setColor(tempColor);
     setBgColor(tempBgColor);
+    setTaille(tempTaille);
     setImageInt(tempImageInt);
     setLogoHeight(tempLogoHeight);
     setLogoWidth(tempLogoWidth);
+    setImgOpacity(tempImgOpacity);
   };
 
   return (
@@ -111,7 +113,16 @@ function Tel() {
             />
           </label>
 
-
+          <label className="text-lg font-medium">
+            Image Opacity :
+            <input
+              type="number"
+              step="0.1"
+              className="border p-2 rounded-md w-80 mb-4"
+              value={tempImgOpacity}
+              onChange={(e) => setTempImgOpacity(Number(e.target.value))}
+            />
+          </label>
         </div>
 
         <button
@@ -127,13 +138,14 @@ function Tel() {
           value={qrValue}
           fgColor={color}
           bgColor={bgColor}
-          size={170}
+          size={taille}
           imageSettings={
             imageInt
               ? {
                   src: imageInt,
                   height: logoHeight,
                   width: logoWidth,
+                  opacity: imgOpacity,
                   excavate: true,
                 }
               : undefined

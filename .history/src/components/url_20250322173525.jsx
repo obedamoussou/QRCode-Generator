@@ -33,7 +33,7 @@ function Url () {
         try {
           new URL(str);
           return true;
-        } catch {
+        } catch (_) {
           return false;
         }
       };
@@ -70,13 +70,13 @@ function Url () {
                 {error && <p className="text-red-500">{error}</p>}
 
                 <div className="flex items-center gap-4 mb-4">
-                    <label className="text-lg font-medium">Couleur :
+                    <label className="text-lg font-medium">Couleur :</label>
                     <input
                     type="color"
                     value={color}
                     onChange={(e) => setTempColor(e.target.value)}
-                    className="w-10 h-10 p-1 border rounded-md"/>
-                    </label>
+                    className="w-10 h-10 p-1 border rounded-md"
+                    />
                     <label htmlFor="" className="text-lg font-medium">Background Color</label>
                     <input
                     type="color"
@@ -88,7 +88,7 @@ function Url () {
                 <div className="flex flex-col">
                     
 
-                    <label htmlFor="" className="text-lg font-medium">Image Width :
+                    <label htmlFor="" className="text-lg font-medium">Image Width :  
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
                     </label>
 

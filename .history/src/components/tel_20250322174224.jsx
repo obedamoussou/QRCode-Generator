@@ -5,13 +5,16 @@ function Tel() {
   const [tel, setTel] = useState("");
   const [tempColor, setTempColor] = useState("#ffffff");
   const [tempBgColor, setTempBgColor] = useState("#000000");
+  const [tempTaille, setTempTaille] = useState(200);
   const [tempImageInt, setTempImageInt] = useState("");
   const [tempLogoHeight, setTempLogoHeight] = useState(35);
   const [tempLogoWidth, setTempLogoWidth] = useState(35);
+  const [tempImgOpacity, setTempImgOpacity] = useState(1);
 
   const [qrValue, setQrValue] = useState("");
   const [color, setColor] = useState("#ffffff");
   const [bgColor, setBgColor] = useState("#000000");
+  const [taille, setTaille] = useState(200);
   const [imageInt, setImageInt] = useState("");
   const [logoHeight, setLogoHeight] = useState(35);
   const [logoWidth, setLogoWidth] = useState(35);
@@ -46,9 +49,11 @@ function Tel() {
     setQrValue(tel);
     setColor(tempColor);
     setBgColor(tempBgColor);
+    setTaille(tempTaille);
     setImageInt(tempImageInt);
     setLogoHeight(tempLogoHeight);
     setLogoWidth(tempLogoWidth);
+    setImgOpacity(tempImgOpacity);
   };
 
   return (
@@ -80,6 +85,15 @@ function Tel() {
         </div>
 
         <div className="flex flex-col">
+          <label className="text-lg font-medium">
+            QR Taille :
+            <input
+              type="number"
+              className="border p-2 rounded-md w-80 mb-4"
+              value={tempTaille}
+              onChange={(e) => setTempTaille(Number(e.target.value))}
+            />
+          </label>
 
           <label className="text-lg font-medium">
             Image Upload :
@@ -111,7 +125,16 @@ function Tel() {
             />
           </label>
 
-
+          <label className="text-lg font-medium">
+            Image Opacity :
+            <input
+              type="number"
+              step="0.1"
+              className="border p-2 rounded-md w-80 mb-4"
+              value={tempImgOpacity}
+              onChange={(e) => setTempImgOpacity(Number(e.target.value))}
+            />
+          </label>
         </div>
 
         <button
@@ -127,13 +150,14 @@ function Tel() {
           value={qrValue}
           fgColor={color}
           bgColor={bgColor}
-          size={170}
+          size={taille}
           imageSettings={
             imageInt
               ? {
                   src: imageInt,
                   height: logoHeight,
                   width: logoWidth,
+                  opacity: imgOpacity,
                   excavate: true,
                 }
               : undefined

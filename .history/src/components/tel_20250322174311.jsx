@@ -46,6 +46,7 @@ function Tel() {
     setQrValue(tel);
     setColor(tempColor);
     setBgColor(tempBgColor);
+    setTaille(tempTaille);
     setImageInt(tempImageInt);
     setLogoHeight(tempLogoHeight);
     setLogoWidth(tempLogoWidth);
@@ -127,13 +128,14 @@ function Tel() {
           value={qrValue}
           fgColor={color}
           bgColor={bgColor}
-          size={170}
+          size={taille}
           imageSettings={
             imageInt
               ? {
                   src: imageInt,
                   height: logoHeight,
                   width: logoWidth,
+                  opacity: imgOpacity,
                   excavate: true,
                 }
               : undefined

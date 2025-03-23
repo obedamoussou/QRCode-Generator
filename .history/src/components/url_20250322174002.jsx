@@ -33,7 +33,7 @@ function Url () {
         try {
           new URL(str);
           return true;
-        } catch {
+        } catch (error) {
           return false;
         }
       };

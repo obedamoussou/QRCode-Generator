@@ -29,24 +29,10 @@ function Url () {
         reader.readAsDataURL(file);
       };
 
-      const isValidUrl = (str) => {
-        try {
-          new URL(str);
-          return true;
-        } catch {
-          return false;
-        }
-      };
-
       const handleClick = (e) => {
         e.preventDefault()
-
-        if (!isValidUrl(url)) {
-            setError("Veuillez entrer une URL valide.");
-            return;
-          }
           
-        setError("");
+        setError("")
         setQrValue(url);
         setColor(tempColor);
         setBgColor(tempBgColor);
@@ -63,20 +49,19 @@ function Url () {
                 <input 
                     type="url"
                     value={ url}
-                    className={`border p-2 rounded-md w-80 mb-4 ${error && "border-red-500"}`}
+                    className="border p-2 rounded-md w-80 mb-4"
                     onChange={(e) => setUrl(e.target.value)}
                 />
-                
-                {error && <p className="text-red-500">{error}</p>}
+                    
 
                 <div className="flex items-center gap-4 mb-4">
-                    <label className="text-lg font-medium">Couleur :
+                    <label className="text-lg font-medium">Couleur :</label>
                     <input
                     type="color"
                     value={color}
                     onChange={(e) => setTempColor(e.target.value)}
-                    className="w-10 h-10 p-1 border rounded-md"/>
-                    </label>
+                    className="w-10 h-10 p-1 border rounded-md"
+                    />
                     <label htmlFor="" className="text-lg font-medium">Background Color</label>
                     <input
                     type="color"
@@ -88,7 +73,7 @@ function Url () {
                 <div className="flex flex-col">
                     
 
-                    <label htmlFor="" className="text-lg font-medium">Image Width :
+                    <label htmlFor="" className="text-lg font-medium">Image Width :  
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4" />
                     </label>
 
@@ -113,7 +98,7 @@ function Url () {
 
             <div className="bg-blue-50 rounded-xl p-8">
                     
-                {qrValue && <QRCodeSVG value={qrValue} fgColor={color} bgColor={bgColor} size={170} imageSettings={
+                {qrValue && <QRCodeSVG value={url} fgColor={color} bgColor={bgColor} size={170} imageSettings={
                     imageInt
                     ? {
                         src: imageInt, // Image intégrée en base64

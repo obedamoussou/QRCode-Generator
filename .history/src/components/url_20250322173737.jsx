@@ -33,7 +33,7 @@ function Url () {
         try {
           new URL(str);
           return true;
-        } catch {
+        } catch (_) {
           return false;
         }
       };
@@ -76,7 +76,7 @@ function Url () {
                     value={color}
                     onChange={(e) => setTempColor(e.target.value)}
                     className="w-10 h-10 p-1 border rounded-md"/>
-                    </label>
+                    
                     <label htmlFor="" className="text-lg font-medium">Background Color</label>
                     <input
                     type="color"

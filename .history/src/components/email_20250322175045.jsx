@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 
-function Tel() {
-  const [tel, setTel] = useState("");
+const Email = () => {
+  
+  
+
+  const [email, setEmail] = useState("");
+  const [tempSubject, setTempSubject] = useState("")
   const [tempColor, setTempColor] = useState("#ffffff");
   const [tempBgColor, setTempBgColor] = useState("#000000");
   const [tempImageInt, setTempImageInt] = useState("");
@@ -10,6 +14,8 @@ function Tel() {
   const [tempLogoWidth, setTempLogoWidth] = useState(35);
 
   const [qrValue, setQrValue] = useState("");
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
   const [color, setColor] = useState("#ffffff");
   const [bgColor, setBgColor] = useState("#000000");
   const [imageInt, setImageInt] = useState("");
@@ -28,56 +34,82 @@ function Tel() {
     reader.readAsDataURL(file);
   };
 
-  const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[+]?[0-9]{7,15}$/;
-    return phoneRegex.test(phone);
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
+    const generateMailtoLink = () => {
+        if (!email) return "";
+        return `mailto:${qrValue}?subject=${encodeURIComponent(tempSubject)}&body=${encodeURIComponent(body)}`;
+    };
 
-        if (!validatePhoneNumber(tel)) {
-        setError("Numéro de téléphone invalide !");
-        setQrValue("");
-        return;
+    const handleClick = (e) => {
+        e.preventDefault()
+
+        if (!validateEmail(email)) {
+          setError("Adresse Mail invalide !");
+          setQrValue("");
+          return;
         }
+    
 
-    setError("");
-    setQrValue(tel);
-    setColor(tempColor);
-    setBgColor(tempBgColor);
-    setImageInt(tempImageInt);
-    setLogoHeight(tempLogoHeight);
-    setLogoWidth(tempLogoWidth);
-  };
+        setError("");
+        setQrValue(email); // Met à jour la valeur du QR Code
+        setColor(tempColor);
+        setBgColor(tempBgColor);
+        setImageInt(tempImageInt);
+        setLogoHeight(tempLogoHeight);
+        setLogoWidth(tempLogoWidth);
+        
+      };
 
   return (
-    <div>
-      <form>
-        <input
-          type="tel"
-          value={tel}
-          className="border p-2 rounded-md w-80 mb-4"
-          onChange={(e) => setTel(e.target.value)}
-        />
-        {error && <p className="text-red-500">{error}</p>}
+    <div className="p-6 flex flex-col items-center">
+      <h1 className="text-2xl font-bold mb-4">Générateur de QR Code</h1>
 
-        <div className="flex items-center gap-4 mb-4">
-          <label className="text-lg font-medium">Couleur :</label>
+      <form action="">
+        <input
+            type="text"
+            placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border p-2 rounded-md w-80 mb-4"
+        />
+
+          {error && <p className="text-red-500">{error}</p>}
+
+        <input 
+            type="text"
+            placeholder="Subject" 
+            onChange={(e) => setSubject(e.target.value)}
+            value={subject}
+            className="border p-2 rounded-md w-80 mb-4" 
+        /> 
+        <input 
+            type="text"
+            placeholder="Message" 
+            className="border p-2 rounded-md w-80 mb-4"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+        />
+        <label className="text-lg font-medium">Background Couleur :
           <input
             type="color"
             value={tempColor}
             onChange={(e) => setTempColor(e.target.value)}
             className="w-10 h-10 p-1 border rounded-md"
           />
-          <label className="text-lg font-medium">Background Color</label>
+          </label>
+
+          <label className="text-lg font-medium">Couleur :
           <input
             type="color"
             value={tempBgColor}
             onChange={(e) => setTempBgColor(e.target.value)}
             className="w-10 h-10 p-1 border rounded-md"
           />
-        </div>
+          </label>
 
         <div className="flex flex-col">
 
@@ -111,23 +143,23 @@ function Tel() {
             />
           </label>
 
-
         </div>
 
         <button
-          onClick={handleClick}
           className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          onClick={handleClick}
         >
           Générer QR Code
         </button>
+        
       </form>
+      {/* Génération du QR Code */}
 
-      {qrValue && (
-        <QRCodeSVG
-          value={qrValue}
-          fgColor={color}
-          bgColor={bgColor}
-          size={170}
+      { qrValue && <QRCodeCanvas 
+        value={generateMailtoLink()} 
+        size={170} 
+        fgColor={color} 
+        bgColor={bgColor}
           imageSettings={
             imageInt
               ? {
@@ -137,11 +169,10 @@ function Tel() {
                   excavate: true,
                 }
               : undefined
-          }
-        />
-      )}
+          } />}
+
     </div>
   );
-}
+};
 
-export default Tel;
+export default Email;

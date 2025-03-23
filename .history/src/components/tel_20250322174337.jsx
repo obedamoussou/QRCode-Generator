@@ -127,7 +127,7 @@ function Tel() {
           value={qrValue}
           fgColor={color}
           bgColor={bgColor}
-          size={170}
+          size={taille}
           imageSettings={
             imageInt
               ? {
