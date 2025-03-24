@@ -48,6 +48,7 @@ function Texte() {
   return (
     <div>
       <form>
+        
         <input
           type="text"
           value={texte}
@@ -132,7 +133,7 @@ function Texte() {
           Générer QR Code
         </button>
       </form>
-
+    
       {qrValue && (
         <QRCodeSVG
           value={qrValue}
@@ -152,7 +153,8 @@ function Texte() {
           }
         />
       )}
-    </div>
+      </div>
+    
   );
 }
 

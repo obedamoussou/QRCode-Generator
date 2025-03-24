@@ -56,20 +56,42 @@ function Url () {
       };
       
     return(
-        
+      <section> 
+         
         <div className="flex flex-wrap gap-y-5 gap-x-10">
-
-            <form action="">
-                <input 
-                    type="url"
-                    value={ url}
-                    className={`border p-2 rounded-md w-80 mb-4 ${error && "border-red-500"}`}
-                    onChange={(e) => setUrl(e.target.value)}
-                />
+          
+            <form className="items-start" action="">
+              
+              <input 
+                type="url"
+                value={ url}
+                className={`border p-2 rounded-md w-80 mb-4 ${error && "border-red-500"}`}
+                onChange={(e) => setUrl(e.target.value)}
+              />
                 
                 {error && <p className="text-red-500">{error}</p>}
 
-                <div className="flex items-center gap-4 mb-4">
+                <button
+                    onClick={handleClick}
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md">
+                    Générer QR Code
+                </button>
+            </form>
+
+            <div className="bg-blue-50 rounded-xl p-8 items-center">
+                    
+                {qrValue && <QRCodeSVG value={qrValue} fgColor={color} bgColor={bgColor} size={170} imageSettings={
+                    imageInt
+                    ? {
+                        src: imageInt, // Image intégrée en base64
+                        height: logoHeight, // Taille de l’image dans le QR Code
+                        width: logoWidth,
+                        excavate: true, // Garde un espace clair derrière l'image
+                      }
+                    : undefined
+                     } />}
+
+                <div className=" items-center gap-4 mb-4">
                     <label className="text-lg font-medium">Couleur :
                     <input
                     type="color"
@@ -101,30 +123,10 @@ function Url () {
                     </label>
               
                     
-                </div>
-
-
-                <button
-                    onClick={handleClick}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md">
-                    Générer QR Code
-                </button>
-            </form>
-
-            <div className="bg-blue-50 rounded-xl p-8">
-                    
-                {qrValue && <QRCodeSVG value={qrValue} fgColor={color} bgColor={bgColor} size={170} imageSettings={
-                    imageInt
-                    ? {
-                        src: imageInt, // Image intégrée en base64
-                        height: logoHeight, // Taille de l’image dans le QR Code
-                        width: logoWidth,
-                        excavate: true, // Garde un espace clair derrière l'image
-                      }
-                    : undefined
-                     } />}
+                </div>     
             </div>
         </div>
+      </section>  
     )
 }
 

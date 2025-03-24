@@ -2,7 +2,7 @@ import React from 'react';
 import { FaQrcode } from 'react-icons/fa';
 const NavBar = () => {
   return (
-    <nav className='justify-between flex flex-wrap px-10 py-5 bg-blue-50'>
+    <nav className='justify-between flex flex-wrap px-3 md:px-10 py-3 md:py-5 bg-blue-50'>
         <div className='flex gap-x-1 items-center'>
             <FaQrcode size={24}  color="blue" />
             <h1 className='font-bold text-[#0000FF] text-2xl '>QR Easy</h1>
