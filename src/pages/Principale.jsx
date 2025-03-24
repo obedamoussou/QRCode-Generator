@@ -23,7 +23,7 @@ const Principale = () => {
       <h1 className='pt-10 font-medium text-3xl'>
         Obtenez votre code QR en quelques clics sur <em className='text-[#0000FF] font-bold'>QR Easy</em>
       </h1>
-      <div className='flex justify-center pt-10'>
+      <div className='flex justify-center gap-10 pt-10'>
         <div className='bg-blue-50 rounded-3xl px-6 md:px-4 py-5 md:py-10'>
           <ul className='flex md:inline'>
             <li className='pb-0 md:pb-10'>
@@ -53,7 +53,7 @@ const Principale = () => {
             </li>
           </ul>
         </div>
-        <div className='ml-10'>
+        <div>
           {sections.find(section => section.id === visibleSection)?.content}
         </div>
       </div>
