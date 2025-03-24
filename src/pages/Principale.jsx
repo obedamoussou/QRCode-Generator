@@ -1,18 +1,63 @@
-import React from 'react';
-import SideBar from "../composants/SideBar.jsx";
+import React, { useState } from 'react';
+import { FaLink, FaEnvelope, FaFont, FaPhone, FaImage } from 'react-icons/fa';
 import Url from "../components/url.jsx";
-const Principale = () => {
-  return (
-    
-    <section className='text-center'>
-        <h1 className='pt-10 font-medium text-3xl'>Obtenez votre code QR en quelques clics sur <em className='text-[#0000FF] font-bold'>QR Easy</em> </h1>
-        <div className='  justify-center flex flex-wrap gap-y-5 gap-x-10 pt-80 md:pt-14'>
-            <SideBar/>
-            <Url/>           
-        </div>
-        
-    </section>
+import Email from "../components/email.jsx";
 
+const Principale = () => {
+  const sections = [
+    { id: 'section1', content: <Url /> },
+    { id: 'section2', content: <Email /> },
+    { id: 'section3', content: <div>Contenu de la section 3</div> },
+    { id: 'section4', content: <div>Contenu de la section 4</div> },
+    { id: 'section5', content: <div>Contenu de la section 5</div> },
+  ];
+
+  const [visibleSection, setVisibleSection] = useState('section1');
+  
+  const showSection = (sectionId) => {
+    setVisibleSection(sectionId);
+  };
+  
+  return (
+    <section className='text-center'>
+      <h1 className='pt-10 font-medium text-3xl'>
+        Obtenez votre code QR en quelques clics sur <em className='text-[#0000FF] font-bold'>QR Easy</em>
+      </h1>
+      <div className='flex justify-center pt-10'>
+        <div className='bg-blue-50 rounded-3xl px-6 md:px-4 py-5 md:py-10'>
+          <ul className='flex md:inline'>
+            <li className='pb-0 md:pb-10'>
+              <button onClick={() => showSection('section1')}>
+                <FaLink size={20} color="blue" />
+              </button>
+            </li>
+            <li className='pb-0 px-8 md:px-0 md:pb-10'>
+              <button onClick={() => showSection('section2')}>
+                <FaEnvelope size={20} color="blue" />
+              </button>
+            </li>
+            <li className='pb-0 md:pb-10'>
+              <button onClick={() => showSection('section3')}>
+                <FaFont size={20} color="blue" />
+              </button>
+            </li>
+            <li className='pb-0 px-8 md:px-0 md:pb-10'>
+              <button onClick={() => showSection('section4')}>
+                <FaPhone size={20} color="blue" />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => showSection('section5')}>
+                <FaImage size={20} color="blue" />
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div className='ml-10'>
+          {sections.find(section => section.id === visibleSection)?.content}
+        </div>
+      </div>
+    </section>
   );
 };
 
