@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { storage } from "../services/firebaseConfig";
+import { storage } from "../services"; // Assure-toi que le chemin est correct
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const UploadImage = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [progress, setProgress] = useState(0);
-  const [downloadURL, setDownloadURL] = useState(null);
+  const [downloadURL, setDownloadURL] = useState<string | null>(null);
 
   const handleFileChange = (event) => {
-    if (event.target.files[0]) {
+    if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
     }
   };
@@ -26,7 +26,7 @@ const UploadImage = () => {
         setProgress(progress);
       },
       (error) => {
-        console.error("Erreur d'upload", error);
+        console.error("Upload failed", error);
       },
       async () => {
         const url = await getDownloadURL(uploadTask.snapshot.ref);
