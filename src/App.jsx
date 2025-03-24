@@ -4,6 +4,7 @@ import Principale from './pages/Principale.jsx';
 import NavBar from './composants/NavBar.jsx';
 import Connexion from './pages/Connexion.jsx';
 import Inscription from './pages/Inscription.jsx';
+import Historique from './pages/Historique.jsx';
 
 function App() {
 
@@ -13,8 +14,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Principale />} />
+        <Route path="/Principale" element={<Principale />} />
         <Route path="/Inscription" element={<Inscription />} />
         <Route path="/Connexion" element={<Connexion />} />
+        <Route path="/Historique" element={<Historique />} />
       </Routes>
     </Router>
 
