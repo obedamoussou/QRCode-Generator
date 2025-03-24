@@ -14,7 +14,6 @@ const SideBar = () => {
         <li className='pb-0 px-8 md:px-0 md:pb-10'><a href="#"><FaPhone size={20} color="blue" /></a></li>
         <li><a href="#"><FaImage size={20} color="blue" /></a></li>
       </ul>
-
     </div>
   );
 };
