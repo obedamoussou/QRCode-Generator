@@ -22,9 +22,9 @@ const Principale = () => {
   };
   
   return (
-    <section className='text-center'>
+    <section className='text-center doto'>
       <h1 className='pt-5 md:pt-10 font-medium text-2xl md:text-3xl'>
-        Obtenez votre code QR en quelques clics sur <em className='text-[#0000FF] font-bold'>QR Easy</em>
+        Obtenez votre code QR en quelques clics sur <em className='text-[#0000FF] font-bold '>QR Easy</em>
       </h1>
       <div className='flex flex-wrap justify-center gap-10 pt-10 md:pt-16'>
         <div className='bg-blue-50 rounded-3xl px-6 md:px-4 py-3 md:py-10 h-auto md:h-1/2'>

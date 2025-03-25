@@ -59,7 +59,7 @@ function Url () {
     return(
       <section> 
          
-        <div className="flex flex-wrap gap-y-5 gap-x-10">
+        <div className="flex flex-wrap gap-y-5 gap-x-10 doto">
           
             <form className="flex flex-col items-start " action="">
               <h1 className="text-3xl font-bold text-[#0000FF] mb-8">Lien/URL</h1>
