@@ -80,7 +80,7 @@ function Url () {
                 </button>
             </form>
 
-            <div className="bg-blue-50 rounded-2xl  justify-center p-4">
+            <div className="bg-blue-50 rounded-2xl  justify-center  p-4">
                  
                 {qrValue && <QRCodeSVG value={qrValue} fgColor={color} bgColor={bgColor} size={170} imageSettings={
                     imageInt

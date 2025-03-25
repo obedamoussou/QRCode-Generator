@@ -10,7 +10,11 @@ function App() {
   return (
 
     <Router>
+<<<<<<< HEAD
       <Principale />
+=======
+      <NavBar />
+>>>>>>> cf93751545cfa51421756141d6daebaea69ade7c
       <Routes>
 
       </Routes>

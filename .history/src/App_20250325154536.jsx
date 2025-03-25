@@ -10,7 +10,9 @@ function App() {
   return (
 
     <Router>
+<<<<<<< HEAD
       <Principale />
+fa51421756141d6daebaea69ade7c
       <Routes>
 
       </Routes>
