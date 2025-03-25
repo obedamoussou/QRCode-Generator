@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
-
+import Upload from "../composants/Upload.jsx";
+import UploadColors from "../composants/UploadColors.jsx";
 const Email = () => {
   
   
@@ -68,16 +69,16 @@ const Email = () => {
       };
 
   return (
-    <div className="p-6 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4">Générateur de QR Code</h1>
+    <div className="flex flex-wrap gap-y-5 gap-x-10">
 
-      <form action="">
+      <form className="flex flex-col items-start " action="">
+        <h1 className="text-3xl font-bold text-[#0000FF] mb-8">Email</h1>
         <input
             type="text"
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border p-2 rounded-md w-80 mb-4"
+            className="border border-[#0000FF] p-2 rounded-md w-80 mb-4"
         />
 
           {error && <p className="text-red-500">{error}</p>}
@@ -87,75 +88,26 @@ const Email = () => {
             placeholder="Subject" 
             onChange={(e) => setSubject(e.target.value)}
             value={subject}
-            className="border p-2 rounded-md w-80 mb-4" 
+            className="border border-[#0000FF] p-2 rounded-md w-80 mb-4" 
         /> 
         <input 
             type="text"
             placeholder="Message" 
-            className="border p-2 rounded-md w-80 mb-4"
+            className="border border-[#0000FF] p-2 rounded-md w-80 mb-4"
             value={body}
             onChange={(e) => setBody(e.target.value)}
         />
-        <label className="text-lg font-medium">Background Couleur :
-          <input
-            type="color"
-            value={tempColor}
-            onChange={(e) => setTempColor(e.target.value)}
-            className="w-10 h-10 p-1 border rounded-md"
-          />
-          </label>
-
-          <label className="text-lg font-medium">Couleur :
-          <input
-            type="color"
-            value={tempBgColor}
-            onChange={(e) => setTempBgColor(e.target.value)}
-            className="w-10 h-10 p-1 border rounded-md"
-          />
-          </label>
-
-        <div className="flex flex-col">
-
-          <label className="text-lg font-medium">
-            Image Upload :
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="mb-4"
-            />
-          </label>
-
-          <label className="text-lg font-medium">
-            Image Height :
-            <input
-              type="number"
-              className="border p-2 rounded-md w-80 mb-4"
-              value={tempLogoHeight}
-              onChange={(e) => setTempLogoHeight(Number(e.target.value))}
-            />
-          </label>
-
-          <label className="text-lg font-medium">
-            Image Width :
-            <input
-              type="number"
-              className="border p-2 rounded-md w-80 mb-4"
-              value={tempLogoWidth}
-              onChange={(e) => setTempLogoWidth(Number(e.target.value))}
-            />
-          </label>
-
-        </div>
+        
 
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-[#0000FF] text-white font-bold px-4 py-2 rounded-lg mt-4"
           onClick={handleClick}
         >
           Générer QR Code
         </button>
         
       </form>
+      <div className="bg-blue-50 rounded-2xl  justify-center p-4 "> 
       {/* Génération du QR Code */}
 
       { qrValue && <QRCodeCanvas 
@@ -173,7 +125,9 @@ const Email = () => {
                 }
               : undefined
           } />}
-
+          <UploadColors/>
+          <Upload/>
+      </div> 
     </div>
   );
 };
