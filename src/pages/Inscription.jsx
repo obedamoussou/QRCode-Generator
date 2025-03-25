@@ -4,7 +4,7 @@ import { FaQrcode } from 'react-icons/fa';
 const Inscription = () => {
   return (
     <section className="flex items-center justify-center min-h-screen">
-      <div className="border-[#0000FF] border-2 flex w-full xl:w-1/2 rounded-lg">
+      <div className="border-[#0000FF] border-2 flex w-full xl:w-1/2 rounded-lg doto">
         <div className="w-0 xl:w-1/2 bg-blue-50 hidden xl:flex items-center justify-center gap-x-1">
           <FaQrcode size={37} color="blue" />
           <h1 className="font-bold text-[#0000FF] text-5xl">QR Easy</h1>
