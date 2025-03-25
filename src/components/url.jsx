@@ -66,7 +66,7 @@ function Url () {
               <input 
                 type="url"
                 value={ url}
-                className={`text-[#0000FF] border-2 border-[#0000FF] p-2 rounded-md w-80 mb-2 ${error && "border-red-500"}`}
+                className={` border-[#0000FF] border p-2 rounded-md w-80 mb-2 ${error && "border-red-500"}`}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="Entrez une URL"
               />
@@ -75,7 +75,7 @@ function Url () {
 
                 <button
                     onClick={handleClick}
-                    className="bg-[#0000FF] text-white font-bold px-4 py-2 rounded-xl mt-4">
+                    className="bg-[#0000FF] text-white font-bold px-4 py-2 rounded-lg mt-4">
                     Générer QR Code
                 </button>
             </form>

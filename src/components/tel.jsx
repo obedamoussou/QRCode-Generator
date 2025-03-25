@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
-
+import Upload from "../composants/Upload.jsx";
+import UploadColors from "../composants/UploadColors.jsx";
 function Tel() {
   const [tel, setTel] = useState("");
   const [tempColor, setTempColor] = useState("#ffffff");
@@ -52,77 +53,29 @@ function Tel() {
   };
 
   return (
-    <div>
-      <form>
+    <div className="flex flex-wrap gap-y-5 gap-x-10">
+      <form className="flex flex-col items-start ">
+        <h1 className="text-3xl font-bold text-[#0000FF] mb-8">Téléphone</h1>
         <input
           type="tel"
           value={tel}
-          className="border p-2 rounded-md w-80 mb-4"
+          className="border-[#0000FF] border p-2 rounded-md w-80 mb-2"
           onChange={(e) => setTel(e.target.value)}
         />
         {error && <p className="text-red-500">{error}</p>}
 
-        <div className="flex items-center gap-4 mb-4">
-          <label className="text-lg font-medium">Couleur :</label>
-          <input
-            type="color"
-            value={tempColor}
-            onChange={(e) => setTempColor(e.target.value)}
-            className="w-10 h-10 p-1 border rounded-md"
-          />
-          <label className="text-lg font-medium">Background Color</label>
-          <input
-            type="color"
-            value={tempBgColor}
-            onChange={(e) => setTempBgColor(e.target.value)}
-            className="w-10 h-10 p-1 border rounded-md"
-          />
-        </div>
-
-        <div className="flex flex-col">
-
-          <label className="text-lg font-medium">
-            Image Upload :
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="mb-4"
-            />
-          </label>
-
-          <label className="text-lg font-medium">
-            Image Height :
-            <input
-              type="number"
-              className="border p-2 rounded-md w-80 mb-4"
-              value={tempLogoHeight}
-              onChange={(e) => setTempLogoHeight(Number(e.target.value))}
-            />
-          </label>
-
-          <label className="text-lg font-medium">
-            Image Width :
-            <input
-              type="number"
-              className="border p-2 rounded-md w-80 mb-4"
-              value={tempLogoWidth}
-              onChange={(e) => setTempLogoWidth(Number(e.target.value))}
-            />
-          </label>
-
-
-        </div>
+        
+      
 
         <button
           onClick={handleClick}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-[#0000FF] text-white font-bold px-4 py-2 rounded-lg mt-4"
         >
           Générer QR Code
         </button>
       </form>
-
-      {qrValue && (
+      <div className="bg-blue-50 rounded-2xl  justify-center p-4">
+        {qrValue && (
         <QRCodeSVG
           value={qrValue}
           fgColor={color}
@@ -140,6 +93,9 @@ function Tel() {
           }
         />
       )}
+      <UploadColors/>
+      <Upload/>
+      </div>
     </div>
   );
 }

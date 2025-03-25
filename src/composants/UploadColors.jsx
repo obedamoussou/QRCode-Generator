@@ -17,14 +17,14 @@ const UploadColors = () => {
     <div className="p-4">
       <button
         onClick={toggleMenu}
-        className="bg-[#0000FF] text-white font-semibold py-2 px-4 rounded-xl flex gap-x-2 items-center"
+        className="bg-[#0000FF] text-white font-semibold py-2 px-4 rounded-lg flex gap-x-2 items-center"
       >
         Couleurs
         <FaChevronDown />
       </button>
       
       {showMenu && (
-        <div className="mt-4 p-4 border border-[#0000FF] rounded-md bg-white shadow-md">
+        <div className="mt-4 p-4 border border-[#0000FF] rounded-lg bg-white shadow-md">
           
           <div className="mb-4">
             <label className="text-lg font-medium">
