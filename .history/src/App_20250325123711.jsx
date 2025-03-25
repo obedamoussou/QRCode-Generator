@@ -10,7 +10,7 @@ function App() {
   return (
 
     <Router>
-      <Principale />
+      <PrincipInscriptionale />
       <Routes>
         
       </Routes>
