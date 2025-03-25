@@ -10,7 +10,7 @@ function App() {
   return (
 
     <Router>
-      <Principale />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Accueil />} />
         
