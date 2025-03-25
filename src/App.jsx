@@ -10,9 +10,11 @@ function App() {
   return (
 
     <Router>
-      <Inscription />
+      <NavBar />
       <Routes>
-        
+        <Route path="/" element={<Principale />} />
+        <Route path="/Inscription" element={<Inscription />} />
+        <Route path="/Connexion" element={<Connexion />} />
       </Routes>
     </Router>
 
