@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {QRCodeSVG} from "qrcode.react";
+import QRCodeSVG from "qrcode.react";
 
 const QRGenerator = () => {
   const [image, setImage] = useState(null);
@@ -64,7 +64,7 @@ const QRGenerator = () => {
       {/* QR Code généré */}
       {qrData && (
         <div className="p-4 border rounded-lg">
-          <QRCodeSVG value={qrData} size={150} />
+          <QRCode value={qrData} size={150} />
         </div>
       )}
     </div>
