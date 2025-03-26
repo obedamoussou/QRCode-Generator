@@ -1,9 +1,9 @@
-import Url from "./components/url";
+import CodeQR from "./pages/CodeQR";
 
 function App() {
 
   return (
-    <Url />
+    <CodeQR />
 
   )
 
