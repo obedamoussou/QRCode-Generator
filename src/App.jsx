@@ -14,7 +14,6 @@ function App() {
       <NavBar />
       <ToastContainer position="top-right" />
       <Routes>
-       
         <Route path="/" element={<Principale />} />
         <Route path="/Principale" element={<Principale />} />
         <Route path="/Inscription" element={<Inscription />} />
