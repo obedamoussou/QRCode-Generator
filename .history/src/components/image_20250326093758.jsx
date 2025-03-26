@@ -48,9 +48,6 @@ const QRGenerator = () => {
       {/* Input pour sélectionner l'image */}
       <input type="file" accept="image/*" onChange={handleFileChange} />
 
-      {/* Afficher l'image sélectionnée */}
-      {image && <img src={image} alt="Aperçu" className="w-40 h-40 object-cover rounded-lg" />}
-
       {/* Bouton pour générer le QR Code */}
       {imageUrl && (
         <button
