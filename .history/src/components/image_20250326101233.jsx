@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {QRCodeSVG} from "qrcode.react";
+import QRCode from "qrcode.react";
 
 const QRGenerator = () => {
   const [image, setImage] = useState(null);
@@ -10,7 +10,7 @@ const QRGenerator = () => {
   const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "upload_preset_qr"); // Remplacez par votre upload preset
+    formData.append("upload_preset", "votre_upload_preset"); // Remplacez par votre upload preset
 
     try {
       const res = await fetch(
@@ -64,7 +64,7 @@ const QRGenerator = () => {
       {/* QR Code généré */}
       {qrData && (
         <div className="p-4 border rounded-lg">
-          <QRCodeSVG value={qrData} size={150} />
+          <QRCode value={qrData} size={150} />
         </div>
       )}
     </div>

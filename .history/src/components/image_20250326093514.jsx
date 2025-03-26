@@ -10,7 +10,7 @@ const QRGenerator = () => {
   const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "upload_preset_qr"); // Remplacez par votre upload preset
+    formData.append("upload_preset", "votre_upload_preset"); // Remplacez par votre upload preset
 
     try {
       const res = await fetch(

@@ -10,11 +10,11 @@ const QRGenerator = () => {
   const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "upload_preset_qr"); // Remplacez par votre upload preset
+    formData.append("upload_preset", "votre_upload_preset"); // Remplacez par votre upload preset
 
     try {
       const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dnmnqtqx2/image/upload", // Remplacez par votre Cloudinary cloud name
+        "https://api.cloudinary.com/v1_1/votre_cloud_name/image/upload", // Remplacez par votre Cloudinary cloud name
         {
           method: "POST",
           body: formData,
@@ -64,7 +64,7 @@ const QRGenerator = () => {
       {/* QR Code généré */}
       {qrData && (
         <div className="p-4 border rounded-lg">
-          <QRCodeSVG value={qrData} size={150} />
+          <QRCode value={qrData} size={150} />
         </div>
       )}
     </div>

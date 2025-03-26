@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {QRCodeSVG} from "qrcode.react";
+import QRCode from "qrcode.react";
 
 const QRGenerator = () => {
   const [image, setImage] = useState(null);
@@ -22,6 +22,7 @@ const QRGenerator = () => {
       );
       const data = await res.json();
       setImageUrl(data.secure_url);
+      setQrData(data.secure_url); // Génère le QR avec l'URL de l'image
     } catch (error) {
       console.error("Erreur lors de l'upload :", error);
     }
@@ -36,13 +37,6 @@ const QRGenerator = () => {
     }
   };
 
-  // Fonction pour générer le QR Code
-  const generateQRCode = () => {
-    if (imageUrl) {
-      setQrData(imageUrl);
-    }
-  };
-
   return (
     <div className="flex flex-col items-center space-y-4 p-6">
       {/* Input pour sélectionner l'image */}
@@ -51,20 +45,10 @@ const QRGenerator = () => {
       {/* Afficher l'image sélectionnée */}
       {image && <img src={image} alt="Aperçu" className="w-40 h-40 object-cover rounded-lg" />}
 
-      {/* Bouton pour générer le QR Code */}
-      {imageUrl && (
-        <button
-          onClick={generateQRCode}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
-          Générer le QR Code
-        </button>
-      )}
-
       {/* QR Code généré */}
       {qrData && (
         <div className="p-4 border rounded-lg">
-          <QRCodeSVG value={qrData} size={150} />
+          <QRCode value={qrData} size={150} />
         </div>
       )}
     </div>

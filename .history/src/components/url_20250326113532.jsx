@@ -83,30 +83,23 @@ function Url() {
   const downloadSVG = () => {
     // Récupérer l'élément SVG contenant le QR code
     const svg = qrRef.current?.querySelector("svg");
-    if (!svg) {
-      console.error("QR code SVG not found!");
-      return;
-    }
+    if (!svg) return;
   
-    // Convertir l'élément SVG en chaîne de texte
+    // Convertir l'élément SVG en chaîne de texte (XML)
     const svgData = new XMLSerializer().serializeToString(svg);
   
-    // Ajouter un en-tête pour éviter que les SVG ne soient rendus comme du texte brut
-    const svgBlob = new Blob([svgData], { type: "image/svg+xml" });
-  
-    // Créer une URL pour le téléchargement
-    const svgUrl = URL.createObjectURL(svgBlob);
-  
-    // Créer un lien pour le téléchargement
+    // Créer un lien pour télécharger le fichier SVG
     const link = document.createElement("a");
+    const svgBlob = new Blob([svgData], { type: "image/svg+xml" });
+    const svgUrl = URL.createObjectURL(svgBlob);
+    
     link.href = svgUrl;
     link.download = "QRCode.svg"; // Nom du fichier SVG à télécharger
     link.click();
-  
-    // Libérer l'URL object pour éviter les fuites de mémoire
+    
+    // Libérer l'URL object pour éviter des fuites de mémoire
     URL.revokeObjectURL(svgUrl);
   };
-  
   
 
   return (
